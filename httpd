@@ -1,4 +1,0 @@
-ssh ec2-user@13.233.8.249
-admin@123
-yum install httpd -y
-
