@@ -1,3 +1,3 @@
-FROM: tomcat:latest
+FROM tomcat:latest
 
 
