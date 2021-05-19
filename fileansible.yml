@@ -1,0 +1,28 @@
+---
+- hosts: all
+  tasks:
+    - name: Copy files from App-Server to QA Server
+      copy:
+        src: [Dockerfile,index.html]
+        dest: .
+
+    - name: Stop the running container
+      become: yes
+      command: docker stop cont1
+
+    - name: Removing the container1
+      become: yes
+      command: docker rm cont1
+
+    - name: Removing the docker image
+      become: yes
+      command: docker rmi -f image1
+
+    - name: Create Docker image
+      become: yes
+      command: docker build -t image2 .
+
+    - name: Create container from Image
+      become: yes
+      command: docker run -d -p 8080:8080 --name cont2 image2
+      
