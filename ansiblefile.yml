@@ -5,19 +5,24 @@
     copy: 
      src: Dockerfile
      dest: .
+
   - name: Copy Index File to QA Server
     copy: 
      src: index.html
      dest: .
+
   - name: Stop Container
     command: docker stop cont1
     ignore_erros: True
+
   - name: Remove container
     command: docker rm cont1
-    ignore_erros: True  
+    ignore_erros: True
+
   - name: Create Docker image
     command: sudo docker build -t image1 .
     ignore_errors: True
+
   - name: Create Container from image
     command: sudo docker run -d -p 8080:8080 --name cont1 image1
     ignore_errors: True
