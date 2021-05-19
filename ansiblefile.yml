@@ -5,14 +5,16 @@
     - name : Copy Docker file to QA Server
       copy:
        src: Dockerfile
-       dest: /home/ec2-user/
+       dest: .
     - name: Copy Index File to QA Server
       copy:
        src: index.html
-       dest: /home/ec2-user/
+       dest: .
     - name: Create Docker image
       command: sudo docker build -t image1 .
+      ignore_errors: True
     - name: Create Container from image
       command: sudo docker run -d -p 8080:8080 --name cont1 image1
+      ignore_errors: True
 
 
