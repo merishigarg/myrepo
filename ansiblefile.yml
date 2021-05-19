@@ -1,13 +1,13 @@
 ---
 -
 - hosts: all
-  tasks:
-    - name : Copy Docker file to QA Server
-      copy:
+  tasks: 
+    - name: Copy Docker file to QA Server
+      copy: 
        src: Dockerfile
        dest: .
     - name: Copy Index File to QA Server
-      copy:
+      copy: 
        src: index.html
        dest: .
     - name: Create Docker image
