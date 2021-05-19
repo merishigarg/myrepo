@@ -4,30 +4,24 @@
     - name: Copy files from App-Server to QA Server
       copy:
         dest: .
-        src: files/{{ item }
-      with_items:
-      - index.html
-      - Dockerfile
-
-
-          #    - name: Copy Index File
-          #copy:
-          #src: index.html
-          #dest: .
+        src: '{{item}}'
+      loop:
+        - index.html
+        - Dockerfile
 
     - name: Stop the running container
       become: yes
-      command: docker stop cont1
+      command: docker stop cont2
       ignore_errors: True
 
     - name: Removing the container1
       become: yes      
-      command: docker rm cont1
+      command: docker rm cont2
       ignore_errors: True
 
     - name: Removing the docker image
       become: yes
-      command: docker rmi -f image1
+      command: docker rmi -f image2
       ignore_errors: True
 
     - name: Create Docker image
